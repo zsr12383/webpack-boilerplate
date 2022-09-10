@@ -2,9 +2,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 const config = {
-  entry: "./routes/javascripts/index.js",
+  entry: "./public/javascripts/index.js",
   output: {
-    path: path.resolve(__dirname, "./routes/bundle"),
+    path: path.resolve(__dirname, "./public/bundle"),
     filename: "index.bundle.js",
   },
   module: {
