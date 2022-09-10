@@ -1,10 +1,11 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 const config = {
-  entry: "./src/index.js",
+  entry: "./index.js",
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "build.js",
+    path: path.resolve(__dirname, "./routes/dist"),
+    filename: "index.js",
   },
   module: {
     rules: [
@@ -17,24 +18,7 @@ const config = {
         test: /\.(sa|sc|c)ss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
-      // {
-      //   test: /\.(png|jpe?g|gif|svg|ico)$/,
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       options: {
-      //         name: "images/[name].[ext]?[hash]",
-      //       }
-      //     },
-      //   ],
-      // },
-      // {
-      //   loader: "url-loader",
-      //   options: {
-      //     name: "images/[name].[ext]?[hash]",
-      //     limit: 10000
-      //   }
-      // },
+      //MiniCssExtractPlugin.loader: css파일만큼 style 태그가 생기는 것을 방지
     ],
   },
   plugins: [
