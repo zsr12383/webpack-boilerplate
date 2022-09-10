@@ -2,10 +2,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 const config = {
-  entry: "./index.js",
+  entry: "./routes/javascripts/index.js",
   output: {
-    path: path.resolve(__dirname, "./routes/dist"),
-    filename: "index.js",
+    path: path.resolve(__dirname, "./routes/bundle"),
+    filename: "index.bundle.js",
   },
   module: {
     rules: [
@@ -18,12 +18,14 @@ const config = {
         test: /\.(sa|sc|c)ss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
-      //MiniCssExtractPlugin.loader: css파일만큼 style 태그가 생기는 것을 방지
+      //css 로더는 js파일에 css파일 import할 수 있게 해줌
+      //MiniCssExtractPlugin.loader: css 파일 수 만큼 style 태그가 생기는 것을 방지
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.css", // 원하는 filename
+      filename: "bundle.css", // 원하는 filename, 아웃풋 경로에 생성
+      // chunkFilename: "style.css",
     }),
   ],
 };
